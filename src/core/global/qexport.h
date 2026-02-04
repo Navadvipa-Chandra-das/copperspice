@@ -127,6 +127,18 @@
 #      define Q_SVG_EXPORT           Q_DECL_IMPORT
 #    endif
 
+#    if defined(QT_BUILD_PRABHUPADA_LIB)
+#      define Q_PRABHUPADA_EXPORT    Q_DECL_EXPORT
+#    else
+#      define Q_PRABHUPADA_EXPORT    Q_DECL_IMPORT
+#    endif
+
+#    if defined(QT_BUILD_PRABHUPADADB_LIB)
+#      define Q_PRABHUPADADB_EXPORT  Q_DECL_EXPORT
+#    else
+#      define Q_PRABHUPADADB_EXPORT  Q_DECL_IMPORT
+#    endif
+
 #    if defined(QT_BUILD_VULKAN_LIB)
 #      define Q_VULKAN_EXPORT        Q_DECL_EXPORT
 #    else
@@ -174,6 +186,8 @@
 #    define Q_SQL_EXPORT             Q_DECL_EXPORT
 #    define Q_NETWORK_EXPORT         Q_DECL_EXPORT
 #    define Q_SVG_EXPORT             Q_DECL_EXPORT
+#    define Q_PRABHUPADA_EXPORT      Q_DECL_EXPORT
+#    define Q_PRABHUPADADB_EXPORT    Q_DECL_EXPORT
 #    define Q_DECLARATIVE_EXPORT     Q_DECL_EXPORT
 #    define Q_OPENGL_EXPORT          Q_DECL_EXPORT
 #    define Q_MULTIMEDIA_EXPORT      Q_DECL_EXPORT
@@ -189,6 +203,8 @@
 #    define Q_SQL_EXPORT
 #    define Q_NETWORK_EXPORT
 #    define Q_SVG_EXPORT
+#    define Q_PRABHUPADA_EXPORT
+#    define Q_PRABHUPADADB_EXPORT
 #    define Q_DECLARATIVE_EXPORT
 #    define Q_OPENGL_EXPORT
 #    define Q_MULTIMEDIA_EXPORT

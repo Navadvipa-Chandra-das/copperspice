@@ -1190,6 +1190,132 @@ class cs_number<0>
 
 #endif
 
+#if defined(QT_BUILD_PRABHUPADA_LIB) || defined(Q_OS_DARWIN)
+
+#define PRABHUPADA_CS_OBJECT(className)                                  CS_OBJECT(className)
+#define PRABHUPADA_CS_OBJECT_MULTIPLE(className, parentX)                CS_OBJECT_MULTIPLE(className, parentX)
+#define PRABHUPADA_CS_GADGET(className)                                  CS_GADGET(className)
+
+#define PRABHUPADA_CS_SLOT_1(access, ...)                                CS_SLOT_1(access, __VA_ARGS__)
+#define PRABHUPADA_CS_SLOT_2(slotName)                                   CS_SLOT_2(slotName)
+#define PRABHUPADA_CS_SLOT_OVERLOAD(slotName, argTypes)                  CS_SLOT_OVERLOAD(slotName, argTypes)
+#define PRABHUPADA_CS_SLOT_OVERLOAD_BOOL(slotName, argTypes)             CS_SLOT_OVERLOAD_BOOL(slotName, argTypes)
+
+#define PRABHUPADA_CS_SIGNAL_1(access, ...)                              CS_SIGNAL_1(access, __VA_ARGS__)
+#define PRABHUPADA_CS_SIGNAL_2(signalName, ...)                          CS_SIGNAL_2(signalName, ## __VA_ARGS__)
+#define PRABHUPADA_CS_SIGNAL_OVERLOAD(signalName, argTypes, ...)         CS_SIGNAL_OVERLOAD(signalName, argTypes, ## __VA_ARGS__)
+
+#define PRABHUPADA_CS_PROPERTY_READ(name, method)                        CS_PROPERTY_READ(name, method)
+#define PRABHUPADA_CS_PROPERTY_WRITE(name, method)                       CS_PROPERTY_WRITE(name, method)
+#define PRABHUPADA_CS_PROPERTY_NOTIFY(name, method)                      CS_PROPERTY_NOTIFY(name, method)
+#define PRABHUPADA_CS_PROPERTY_RESET(name, method)                       CS_PROPERTY_RESET(name, method)
+#define PRABHUPADA_CS_PROPERTY_REVISION(name, data)                      CS_PROPERTY_REVISION(name, data)
+#define PRABHUPADA_CS_PROPERTY_DESIGNABLE(name, data)                    CS_PROPERTY_DESIGNABLE(name, data)
+#define PRABHUPADA_CS_PROPERTY_DESIGNABLE_NONSTATIC(name, data)          CS_PROPERTY_DESIGNABLE_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_SCRIPTABLE(name, data)                    CS_PROPERTY_SCRIPTABLE(name, data)
+#define PRABHUPADA_CS_PROPERTY_SCRIPTABLE_NONSTATIC(name, data)          CS_PROPERTY_SCRIPTABLE_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_STORED(name, data)                        CS_PROPERTY_STORED(name, data)
+#define PRABHUPADA_CS_PROPERTY_STORED_NONSTATIC(name, data)              CS_PROPERTY_STORED_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_USER(name, data)                          CS_PROPERTY_USER(name, data)
+#define PRABHUPADA_CS_PROPERTY_USER_NONSTATIC(name, data)                CS_PROPERTY_USER_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_CONSTANT(name)                            CS_PROPERTY_CONSTANT(name)
+#define PRABHUPADA_CS_PROPERTY_FINAL(name)                               CS_PROPERTY_FINAL(name)
+
+#else
+#define PRABHUPADA_CS_OBJECT(className)                                  CS_OBJECT_OUTSIDE(className)
+#define PRABHUPADA_CS_OBJECT_MULTIPLE(className, parentX)                CS_OBJECT_MULTIPLE_OUTSIDE(className, parentX)
+#define PRABHUPADA_CS_GADGET(className)                                  CS_GADGET_OUTSIDE(className)
+
+#define PRABHUPADA_CS_SLOT_1(access, ...)                                __VA_ARGS__;
+#define PRABHUPADA_CS_SLOT_2(slotName)
+#define PRABHUPADA_CS_SLOT_OVERLOAD(slotName, argTypes)
+#define PRABHUPADA_CS_SLOT_OVERLOAD_BOOL(slotName, argTypes)
+
+#define PRABHUPADA_CS_SIGNAL_1(access, ...)                              __VA_ARGS__;
+#define PRABHUPADA_CS_SIGNAL_2(signalName, ...)
+#define PRABHUPADA_CS_SIGNAL_OVERLOAD(signalName, argTypes, ...)
+
+#define PRABHUPADA_CS_PROPERTY_READ(name, method)
+#define PRABHUPADA_CS_PROPERTY_WRITE(name, method)
+#define PRABHUPADA_CS_PROPERTY_NOTIFY(name, method)
+#define PRABHUPADA_CS_PROPERTY_RESET(name, method)
+#define PRABHUPADA_CS_PROPERTY_REVISION(name, data)
+#define PRABHUPADA_CS_PROPERTY_DESIGNABLE(name, data)
+#define PRABHUPADA_CS_PROPERTY_DESIGNABLE_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_SCRIPTABLE(name, data)
+#define PRABHUPADA_CS_PROPERTY_SCRIPTABLE_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_STORED(name, data)
+#define PRABHUPADA_CS_PROPERTY_STORED_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_USER(name, data)
+#define PRABHUPADA_CS_PROPERTY_USER_NONSTATIC(name, data)
+#define PRABHUPADA_CS_PROPERTY_CONSTANT(name)
+#define PRABHUPADA_CS_PROPERTY_FINAL(name)
+
+#endif
+
+#if defined(QT_BUILD_PRABHUPADADB_LIB) || defined(Q_OS_DARWIN)
+
+#define PRABHUPADADB_CS_OBJECT(className)                                  CS_OBJECT(className)
+#define PRABHUPADADB_CS_OBJECT_MULTIPLE(className, parentX)                CS_OBJECT_MULTIPLE(className, parentX)
+#define PRABHUPADADB_CS_GADGET(className)                                  CS_GADGET(className)
+
+#define PRABHUPADADB_CS_SLOT_1(access, ...)                                CS_SLOT_1(access, __VA_ARGS__)
+#define PRABHUPADADB_CS_SLOT_2(slotName)                                   CS_SLOT_2(slotName)
+#define PRABHUPADADB_CS_SLOT_OVERLOAD(slotName, argTypes)                  CS_SLOT_OVERLOAD(slotName, argTypes)
+#define PRABHUPADADB_CS_SLOT_OVERLOAD_BOOL(slotName, argTypes)             CS_SLOT_OVERLOAD_BOOL(slotName, argTypes)
+
+#define PRABHUPADADB_CS_SIGNAL_1(access, ...)                              CS_SIGNAL_1(access, __VA_ARGS__)
+#define PRABHUPADADB_CS_SIGNAL_2(signalName, ...)                          CS_SIGNAL_2(signalName, ## __VA_ARGS__)
+#define PRABHUPADADB_CS_SIGNAL_OVERLOAD(signalName, argTypes, ...)         CS_SIGNAL_OVERLOAD(signalName, argTypes, ## __VA_ARGS__)
+
+#define PRABHUPADADB_CS_PROPERTY_READ(name, method)                        CS_PROPERTY_READ(name, method)
+#define PRABHUPADADB_CS_PROPERTY_WRITE(name, method)                       CS_PROPERTY_WRITE(name, method)
+#define PRABHUPADADB_CS_PROPERTY_NOTIFY(name, method)                      CS_PROPERTY_NOTIFY(name, method)
+#define PRABHUPADADB_CS_PROPERTY_RESET(name, method)                       CS_PROPERTY_RESET(name, method)
+#define PRABHUPADADB_CS_PROPERTY_REVISION(name, data)                      CS_PROPERTY_REVISION(name, data)
+#define PRABHUPADADB_CS_PROPERTY_DESIGNABLE(name, data)                    CS_PROPERTY_DESIGNABLE(name, data)
+#define PRABHUPADADB_CS_PROPERTY_DESIGNABLE_NONSTATIC(name, data)          CS_PROPERTY_DESIGNABLE_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_SCRIPTABLE(name, data)                    CS_PROPERTY_SCRIPTABLE(name, data)
+#define PRABHUPADADB_CS_PROPERTY_SCRIPTABLE_NONSTATIC(name, data)          CS_PROPERTY_SCRIPTABLE_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_STORED(name, data)                        CS_PROPERTY_STORED(name, data)
+#define PRABHUPADADB_CS_PROPERTY_STORED_NONSTATIC(name, data)              CS_PROPERTY_STORED_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_USER(name, data)                          CS_PROPERTY_USER(name, data)
+#define PRABHUPADADB_CS_PROPERTY_USER_NONSTATIC(name, data)                CS_PROPERTY_USER_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_CONSTANT(name)                            CS_PROPERTY_CONSTANT(name)
+#define PRABHUPADADB_CS_PROPERTY_FINAL(name)                               CS_PROPERTY_FINAL(name)
+
+#else
+#define PRABHUPADADB_CS_OBJECT(className)                                  CS_OBJECT_OUTSIDE(className)
+#define PRABHUPADADB_CS_OBJECT_MULTIPLE(className, parentX)                CS_OBJECT_MULTIPLE_OUTSIDE(className, parentX)
+#define PRABHUPADADB_CS_GADGET(className)                                  CS_GADGET_OUTSIDE(className)
+
+#define PRABHUPADADB_CS_SLOT_1(access, ...)                                __VA_ARGS__;
+#define PRABHUPADADB_CS_SLOT_2(slotName)
+#define PRABHUPADADB_CS_SLOT_OVERLOAD(slotName, argTypes)
+#define PRABHUPADADB_CS_SLOT_OVERLOAD_BOOL(slotName, argTypes)
+
+#define PRABHUPADADB_CS_SIGNAL_1(access, ...)                              __VA_ARGS__;
+#define PRABHUPADADB_CS_SIGNAL_2(signalName, ...)
+#define PRABHUPADADB_CS_SIGNAL_OVERLOAD(signalName, argTypes, ...)
+
+#define PRABHUPADADB_CS_PROPERTY_READ(name, method)
+#define PRABHUPADADB_CS_PROPERTY_WRITE(name, method)
+#define PRABHUPADADB_CS_PROPERTY_NOTIFY(name, method)
+#define PRABHUPADADB_CS_PROPERTY_RESET(name, method)
+#define PRABHUPADADB_CS_PROPERTY_REVISION(name, data)
+#define PRABHUPADADB_CS_PROPERTY_DESIGNABLE(name, data)
+#define PRABHUPADADB_CS_PROPERTY_DESIGNABLE_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_SCRIPTABLE(name, data)
+#define PRABHUPADADB_CS_PROPERTY_SCRIPTABLE_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_STORED(name, data)
+#define PRABHUPADADB_CS_PROPERTY_STORED_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_USER(name, data)
+#define PRABHUPADADB_CS_PROPERTY_USER_NONSTATIC(name, data)
+#define PRABHUPADADB_CS_PROPERTY_CONSTANT(name)
+#define PRABHUPADADB_CS_PROPERTY_FINAL(name)
+
+#endif
+
 // ** 8
 #if defined(QT_BUILD_VULKAN_LIB) || defined(Q_OS_DARWIN)
 
