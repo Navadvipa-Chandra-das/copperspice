@@ -72,7 +72,7 @@ endif()
 # required libraries
 set(BUILD_COMPONENTS "Core Xml")
 
-set(CS_OPTIONAL_COMPONENTS Gui Multimedia Network OpenGL Sql Svg Vulkan WebKit XmlPatterns)
+set(CS_OPTIONAL_COMPONENTS Gui Multimedia Network OpenGL Sql Svg Vulkan WebKit XmlPatterns Prabhupada PrabhupadaDB)
 
 set(PACKAGE           "copperspice")
 set(PACKAGE_NAME      "CopperSpice")
@@ -172,6 +172,7 @@ endif()
 
 string(TIMESTAMP BUILD_DATE "%Y-%m-%d")
 add_definitions(-DQT_SHARED)
+add_definitions(-DCS_MODE)
 
 check_include_file(dlfcn.h       HAVE_DLFCN_H)
 check_include_file(dirent.h      HAVE_DIRENT_H)

@@ -57,7 +57,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Windows")
    target_link_libraries(NNPrabhupadaDB
       PRIVATE
       ws2_32
-      libpqxx::pqxx
+      #libpqxx::pqxx
    )
 endif()
 
