@@ -11,6 +11,9 @@
 Попробуем собрать Qt и QtCreator и CopperSpice из исходных текстов!
 Настроим QtCreator, чтобы можно было писать и отлаживать программы с CopperSpice
 
+Пример работы смотрите тут - https://gitflic.ru/project/navadvipa-chandra-das/slovar-shrily-prabhupady-na-copperspice .
+Это словарь Его Божественной Милости основателя-арарьи Международного Общества сознания Кришны Шри Шримад Абхая Чаранаравинды Бхактиведанты Свами Прабхупады!
+
 ![Это просто пример, что отладка работает](./img/QtCreator1.jpg)
 
 Следуем по пути, предначертанном на сайте Qt — https://wiki.qt.io/Building_Qt_6_from_Git .
