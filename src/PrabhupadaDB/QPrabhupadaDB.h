@@ -23,7 +23,7 @@
 
 #endif
 
-#include <pqxx/pqxx>
+//#include <pqxx/pqxx>
 
 class Q_PRABHUPADADB_EXPORT QStorageDB : public QStorage
 {
@@ -39,7 +39,7 @@ class Q_PRABHUPADADB_EXPORT QStorageDB : public QStorage
 
     QSqlDatabase* m_Database = nullptr;
     QString m_Schema;
-    pqxx::connection* m_PostgreSQL = nullptr;
+    //pqxx::connection* m_PostgreSQL = nullptr;
     void SetDatabase( QSqlDatabase* Value );
     virtual QString PrefixKeyStorage( bool AUseUserName ) override;
     virtual void ResetSettings() override;
