@@ -158,11 +158,7 @@ using QEmitString = QEmitValue< QString >;
 
 class Q_PRABHUPADA_EXPORT QEmitInt : public QObject
 {
-# ifdef CS_MODE
-    CS_OBJECT( QEmitValue )
-# else
-    Q_OBJECT
-# endif
+  Q_OBJECT
   public:
     using inherited = QObject;
     int m_Value;
@@ -219,14 +215,9 @@ class Q_PRABHUPADA_EXPORT QEmitInt : public QObject
         , m_Value( Value ) {};
     virtual ~QEmitInt() {};
 
-# ifdef CS_MODE
-    CS_SIGNAL_1( Public, void SignalValueChanged( const int& Value ) )
-    CS_SIGNAL_2( SignalValueChanged, Value )
-# else
     signals:
       void SignalValueChanged( const int& Value );
     public:
-# endif
 
     void SetValue( int Value )
     {
@@ -260,11 +251,7 @@ class Q_PRABHUPADA_EXPORT QEmitInt : public QObject
 
 class Q_PRABHUPADA_EXPORT QEmitBool : public QObject
 {
-# ifdef CS_MODE
-    CS_OBJECT( QEmitValue )
-# else
-    Q_OBJECT
-# endif
+  Q_OBJECT
   public:
     using inherited = QObject;
     bool m_Value;
@@ -321,14 +308,9 @@ class Q_PRABHUPADA_EXPORT QEmitBool : public QObject
         , m_Value( Value ) {};
     virtual ~QEmitBool() {};
 
-# ifdef CS_MODE
-    CS_SIGNAL_1( Public, void SignalValueChanged( const bool& Value ) )
-    CS_SIGNAL_2( SignalValueChanged, Value )
-# else
     signals:
       void SignalValueChanged( const bool& Value );
     public:
-# endif
     void SetValue( bool Value )
     {
         if ( m_Stop == 0 && m_Value != Value ) {
@@ -359,13 +341,9 @@ class Q_PRABHUPADA_EXPORT QEmitBool : public QObject
     };
 };
 
-class Q_PRABHUPADA_TEMPLATE_EXPORT QEmitString : public QObject
+class Q_PRABHUPADA_EXPORT QEmitString : public QObject
 {
-# ifdef CS_MODE
-    CS_OBJECT( QEmitValue )
-# else
-    Q_OBJECT
-# endif
+  Q_OBJECT
   public:
     using inherited = QObject;
     QString m_Value;
@@ -422,14 +400,9 @@ class Q_PRABHUPADA_TEMPLATE_EXPORT QEmitString : public QObject
         , m_Value( Value ) {};
     virtual ~QEmitString() {};
 
-# ifdef CS_MODE
-    CS_SIGNAL_1( Public, void SignalValueChanged( const QString& Value ) )
-    CS_SIGNAL_2( SignalValueChanged, Value )
-# else
     signals:
       void SignalValueChanged( const QString& Value );
     public:
-# endif
     void SetValue( QString Value )
     {
         if ( m_Stop == 0 && m_Value != Value ) {
