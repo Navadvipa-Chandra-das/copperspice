@@ -14,6 +14,46 @@
 Пример работы смотрите тут - https://gitflic.ru/project/navadvipa-chandra-das/slovar-shrily-prabhupady-na-copperspice .
 Это словарь Его Божественной Милости основателя-арарьи Международного Общества сознания Кришны Шри Шримад Абхая Чаранаравинды Бхактиведанты Свами Прабхупады!
 
+![Это просто картинка двух версий Словаря Шрилы Прабхуады - на CopperSpice и на Qt](./img/PrabhupadaDictionaryCopperSpiceQt.jpg)
+
+### размер выполняемого файла
+
+| Библиотека и режим сборки | CopperSpice Debug | Qt Debug | CopperSpice Release | Qt Release |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Размер выполняемого файла PrabhupadaDictionary.exe | 1295872 | 586752 | 518656 | 200192 |
+
+Измерение быстродействия в миллисекундах в разнях библиотеках и режимах сборки
+
+| Событие  | CopperSpice Debug | Qt Debug | CopperSpice Release | Qt Release |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Начальная загрузка словаря Русский - RU | 92078 | 23142 | 2374 | 927  |
+| Смена языка словаря с Русского на Английский - RU -> EN  | 94504  | 24757 | 2428 | 1087 |
+| Сортировка по Переводу RU  | 78353 | 22422 | 1412 | 582 |
+| Сортировка по Санскриту RU  | 68246 | 19788 | 1199  | 538 |
+| Сортировка по Переводу EN  | 94954 | 27988 | 1861 | 817 |
+| Сортировка по Санскриту EN  | 73198 | 21380 | 1439 | 662 |
+| Like Mode Sanskrit == "маха" Translate == "" RU  | 2119 | 65 | 50 | 23 |
+| Regular Expression Mode Sanskrit == "маха" Translate == "" RU | 2685 | 62 | 95 | 60 |
+| Like Mode Sanskrit == "маха%муни" Translate == "" RU | 2149 | 59 | 49 | 25 |
+| Regular Expression Mode Sanskrit == "маха.*муни" Translate == "" RU | 2703 | 64 | 98 | 61 |
+| Like Mode Sanskrit == "маха" Translate == "великий" RU | 2155 | 64 | 49 | 25 |
+| Regular Expression Mode Sanskrit == "маха" Translate == "великий" RU | 2735 | 70 | 99 | 57 |
+| Like Mode Sanskrit == "maha" Translate == "" EN | 2083 | 85 | 62 | 30 |
+| Regular Expression Mode Sanskrit == "maha" Translate == "" EN | 2163 | 88 | 88 | 79 |
+| Like Mode Sanskrit == "maha%muni" Translate == "" EN | 2089 | 93 | 62 | 32 |
+| Regular Expression Mode Sanskrit == "maha.*muni" Translate == "" EN | 2162 | 84 | 105 | 74 |
+| Like Mode Sanskrit == "maha" Translate == "great" EN | 2099 | 83 | 59 | 32 |
+| Regular Expression Mode Sanskrit == "maha" Translate == "great" EN | 2188 | 78 | 93 | 72 |
+
+### Короткие выводы по соревнованию
+
+
+Общий вывод такой - Qt уверенно побеждает CopperSpice как по размеру исполнимых файлов, так и по быстродействию!
+Причем нужно учесть, что код один и тот же, и компилятор тоже одинаковый!
+Настройки Debug и Release тоже одинаковые как для Qt, так и для CopperSpice
+
+Еще один вывод - функция Like уверенно побеждает по быстродействию Regular Expression. Только в режиме Qt Debug они премерно равны.
+
 ![Это просто пример, что отладка работает](./img/QtCreator1.jpg)
 
 Следуем по пути, предначертанном на сайте Qt — https://wiki.qt.io/Building_Qt_6_from_Git .
@@ -130,7 +170,9 @@ D:\QtSource\ReleaseVS
 D:\QtSource\ReleaseVS\Build — тут будут храниться результаты конфигурирования библиотеки Qt
 D:\QtSource\ReleaseVS\Lib — тут будет храниться уже готовая к употреблению библиотека Qt
 
-19. Теперь перейдем к очень важному этапу создания нужных файлов! Звёздочки копировать не надо! Они просто служат для обозначения границ — начало файла и конец файла.
+19.1. Устанавливаем язык Go. Качаем тут - https://go.dev/dl/
+
+19.2. Теперь перейдем к очень важному этапу создания нужных файлов! Звёздочки копировать не надо! Они просто служат для обозначения границ — начало файла и конец файла.
 Создадим файл D:\QtSource\Bat\LogReleaseVSConfig.bat и запишем его содержимое таким образом:
 ```bat
 ReleaseVSConfig.bat => ./../Log/ReleaseVSConfig.log

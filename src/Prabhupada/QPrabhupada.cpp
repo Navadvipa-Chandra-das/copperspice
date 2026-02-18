@@ -1,5 +1,41 @@
 #include <QPrabhupada.h>
 
+QClassicLogTime::QClassicLogTime()
+{
+}
+
+QClassicLogTime::QClassicLogTime( const QClassicLogTime& A )
+  : m_StartTime(  A.m_StartTime )
+  , m_FinishTime( A.m_FinishTime )
+{
+}
+
+QClassicLogTime::QClassicLogTime( QClassicLogTime&& A )
+  : m_StartTime(  std::move( A.m_StartTime ) )
+  , m_FinishTime( std::move( A.m_FinishTime ) )
+{
+}
+
+QClassicLogTime& QClassicLogTime::operator = ( const QClassicLogTime& A )
+{
+  m_StartTime  = A.m_StartTime;
+  m_FinishTime = A.m_FinishTime;
+
+  return *this;
+}
+
+QClassicLogTime& QClassicLogTime::operator = ( QClassicLogTime&& A )
+{
+  m_StartTime  = std::move( A.m_StartTime );
+  m_FinishTime = std::move( A.m_FinishTime );
+
+  return *this;
+}
+
+QClassicLogTime::~QClassicLogTime()
+{
+}
+
 QMapMemoryStorage::QMapMemoryStorage()
   : inherited()
 {
@@ -1152,6 +1188,34 @@ void QClassicLog::Log( const QString &ALogString )
 {
   QString S = QDateTime::currentDateTime().toString( "dd/MM/yyyy hh:mm:ss:zzz " ) + ALogString + "\n";
   *m_Stream << S;
+}
+
+void QClassicLog::StartTime( int AKeyEvent )
+{
+  QClassicLogTimeMap::iterator it = m_StackTime.find( AKeyEvent );
+
+  if ( it != m_StackTime.end() ) {
+    throw ( "QClassicLog::StartTime already have AKeyEvent == " + QString::number( AKeyEvent ) );
+  } else {
+    QClassicLogTime T;
+    T.m_StartTime = QDateTime::currentMSecsSinceEpoch();
+    m_StackTime.emplace( std::make_pair( AKeyEvent, T ) );
+  }
+}
+
+void QClassicLog::FinishTimeLog( int AKeyEvent, const QString &ALogString )
+{
+  QClassicLogTimeMap::iterator it = m_StackTime.find( AKeyEvent );
+
+  if ( it == m_StackTime.end() ) {
+    throw ( "QClassicLog::FinishTimeLog not have AKeyEvent == " + QString::number( AKeyEvent ) + " " + ALogString );
+  } else {
+    QClassicLogTime& T = (*it).second;
+    T.m_FinishTime = QDateTime::currentMSecsSinceEpoch();
+    QString S = QDateTime::currentDateTime().toString( "dd/MM/yyyy hh:mm:ss:zzz " ) + ALogString + " time = " + QString::number( T.m_FinishTime - T.m_StartTime ) + "\n";
+    m_StackTime.erase( AKeyEvent );
+    *m_Stream << S;
+  }
 }
 
 void PrepareLanguageComboBox( QEmitInt& ALanguageIndex, QLanguageVector& ALanguageVector, QComboBox *CB )

@@ -5,6 +5,19 @@
 #include <memory>
 #include <QPrabhupadaFocus.h>
 
+// Два особенных макроса
+// #define PRABHUPADA_LOG
+// #define PRABHUPADA_TIME_LOG
+// Если определен макрос PRABHUPADA_LOG, то работает логирование при помощи макроса PrabhupadaLog( S )
+// Если не определен макрос PRABHUPADA_LOG, то макрос PrabhupadaLog( S ) не генерирует никакого кода вообще!
+// Если определен макрос PRABHUPADA_TIME_LOG, то работает логирование для измерения промежутков времени при помощи макросов
+// PrabhupadaStartTime() и PrabhupadaFinishTimeLog( S )
+// Если не определен макрос PRABHUPADA_TIME_LOG, то макросы PrabhupadaStartTime() и PrabhupadaFinishTimeLog( S ) не генерируют никакого кода вообще!
+// Макросы PRABHUPADA_LOG и PRABHUPADA_TIME_LOG никак не зависят друг от друга
+
+// Если определен макрос CS_MODE, то это означает код, совместимый с библиотекой CopperSpice,
+// а если не определен макрос CS_MODE, то это означает код, совместимый с библиотекой Qt
+
 #ifdef CS_MODE
 
 #include <QtCore>
@@ -23,6 +36,21 @@
 
 #endif
 
+class Q_PRABHUPADA_EXPORT QClassicLogTime
+{
+  public:
+    QClassicLogTime();
+    QClassicLogTime( const QClassicLogTime& A );
+    QClassicLogTime( QClassicLogTime&& A );
+    QClassicLogTime& operator = ( const QClassicLogTime& A );
+    QClassicLogTime& operator = ( QClassicLogTime&& A );
+    ~QClassicLogTime();
+    qint64 m_StartTime = 0;
+    qint64 m_FinishTime = 0;
+};
+
+using QClassicLogTimeMap = std::map< int, QClassicLogTime >;
+
 class Q_PRABHUPADA_EXPORT QClassicLog
 {
   public:
@@ -38,6 +66,9 @@ class Q_PRABHUPADA_EXPORT QClassicLog
     bool StartLog( const QString &AFileLog );
     void FinishLog();
     void Log( const QString &ALogString );
+    QClassicLogTimeMap m_StackTime;
+    void StartTime( int AKeyEvent );
+    void FinishTimeLog( int AKeyEvent, const QString &ALogString );
     static QClassicLog* StaticLog;
 };
 
@@ -45,6 +76,22 @@ class Q_PRABHUPADA_EXPORT QClassicLog
   #define PrabhupadaLog( S )       QClassicLog::StaticLog->Log( S )
 #else
   #define PrabhupadaLog( S )
+#endif
+
+#ifdef PRABHUPADA_TIME_LOG
+  #define PrabhupadaStartTime( N ) QClassicLog::StaticLog->StartTime( N )
+  #define PrabhupadaFinishTimeLog( N, S ) QClassicLog::StaticLog->FinishTimeLog( N, S )
+#else
+  #define PrabhupadaStartTime( N )
+  #define PrabhupadaFinishTimeLog( N, S )
+#endif
+
+#if defined PRABHUPADA_LOG or defined PRABHUPADA_TIME_LOG
+  #define PrabhupadaLogInit( V, F ) \
+    std::unique_ptr< QClassicLog > V( new QClassicLog( F ) ); \
+    QClassicLog::StaticLog = V.get()
+#else
+  #define PrabhupadaLogInit( V, F )
 #endif
 
 #ifdef CS_MODE
